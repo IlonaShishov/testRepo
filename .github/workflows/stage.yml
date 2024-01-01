@@ -22,8 +22,6 @@ jobs:
 
       - name: Update date in CHANGELOG.md
         run: |
-          pwd
-          ls
           day_suffix=$(date +"%e" | sed 's/^[0-9]*//')
           if [ "$day_suffix" = "1" ] || [ "$day_suffix" = "21" ] || [ "$day_suffix" = "31" ]; then
             suffix="st"
@@ -42,3 +40,5 @@ jobs:
           if [ "$current_date" != "$today" ]; then
             sed -i 's/## $version \([^)]*\)/## $version ($today)/' CHANGELOG.md
           fi
+
+          cat CHANGELOG.md
