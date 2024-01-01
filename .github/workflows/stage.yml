@@ -34,7 +34,7 @@ jobs:
           fi 
           today="$(date +"%b %-d")$suffix $(date +"%Y")"
 
-          version="${{ steps.bump.outputs.version }}"
+          version="0.9.1"
           current_date=$(grep -oP "(?<=## $version \()[^\)]+" ./CHANGELOG.md)
 
           if [ "$current_date" != "$today" ]; then
