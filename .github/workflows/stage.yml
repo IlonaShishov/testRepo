@@ -40,5 +40,5 @@ jobs:
           current_date=$(grep -oP "(?<=## $version \()[^\)]+" ./CHANGELOG.md)
 
           if [ "$current_date" != "$today" ]; then
-            sed -E -i '' "s/## $version \([^)]*\)/## $version ($today)/" ./CHANGELOG.md
+            sed -i 's/## $version \([^)]*\)/## $version ($today)/' CHANGELOG.md
           fi
