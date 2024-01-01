@@ -37,6 +37,16 @@ jobs:
           version="0.9.1"
           current_date=$(grep -oP "(?<=## $version \()[^\)]+" ./CHANGELOG.md)
 
+          echo $today 
+
+          result=$(grep -oP "## $version \([^)]*\)" ./CHANGELOG.md)
+
+          if [ -n "$result" ]; then
+            echo "Pattern found: $result"
+          else
+            echo "Pattern not found."
+          fi
+
           if [ "$current_date" != "$today" ]; then
             sed -i 's/## $version \([^)]*\)/## $version ($today)/' CHANGELOG.md
           fi
