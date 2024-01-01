@@ -23,14 +23,14 @@ jobs:
       - name: Update date in CHANGELOG.md
         run: |
           day_suffix=$(date +"%e" | sed 's/^[0-9]*//')
-          if [ "$day_suffix" = "1" ] || [ "$day_suffix" = "21" ] || [ "$day_suffix" = "31" ]; then /
-            suffix="st" /
-          elif [ "$day_suffix" = "2" ] || [ "$day_suffix" = "22" ]; then /
-            suffix="nd" /
-          elif [ "$day_suffix" = "3" ] || [ "$day_suffix" = "23" ]; then /
-            suffix="rd" /
-          else /
-            suffix="th" /
+          if [ "$day_suffix" = "1" ] || [ "$day_suffix" = "21" ] || [ "$day_suffix" = "31" ]; then
+            suffix="st"
+          elif [ "$day_suffix" = "2" ] || [ "$day_suffix" = "22" ]; then
+            suffix="nd"
+          elif [ "$day_suffix" = "3" ] || [ "$day_suffix" = "23" ]; then
+            suffix="rd"
+          else
+            suffix="th"
           fi 
           today="$(date +"%b %-d")$suffix $(date +"%Y")"
 
