@@ -34,7 +34,7 @@ jobs:
 
           version="0.9.1"
           echo "works"
-          if grep -qE "## $version \([^\)]*\)" ./CHANGELOG.md; then
+          if grep -qE "## $version \([^)]*\)" ./CHANGELOG.md; then
             current_date=$(grep -oP "(?<=## $version \()[^\)]*" ./CHANGELOG.md)
           fi
           echo "works"
