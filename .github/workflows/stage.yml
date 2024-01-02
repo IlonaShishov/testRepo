@@ -33,18 +33,13 @@ jobs:
           today="$(date +"%b %-d")$suffix $(date +"%Y")"
 
           version="0.9.1"
-          echo "works"
           if grep -qE "## $version \([^)]*\)" ./CHANGELOG.md; then
-            echo "works"
             current_date=$(grep -oP "(?<=## $version \()[^\)]*" ./CHANGELOG.md)
-          fi
-          echo "works"
-  
-          if [ -z "$current_date" ]; then
-            echo "works"
+            if [ "$current_date" != "$today" ]; then
+              sed -E -i "s/## $version \([^)]*\)/## $version ($today)/" CHANGELOG.md
+            fi
+          else
             sed -E -i "s/## $version/## $version ($today)/" CHANGELOG.md
-          elif [ "$current_date" != "$today" ]; then
-            sed -E -i "s/## $version \([^)]*\)/## $version ($today)/" CHANGELOG.md
           fi
 
           cat CHANGELOG.md
