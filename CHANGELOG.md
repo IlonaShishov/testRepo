@@ -1,5 +1,5 @@
 # Change Log
-## 0.9.1 ()
+## 0.9.1
 - fixes - Resolved endpoint configuration issue by removing EXHORT_DEV_MODE environment configuration parameter. See [PR#672](https://github.com/fabric8-analytics/fabric8-analytics-vscode-extension/pull/672).
 ## 0.9.0 (Dec 21th 2023)
 - informational - Service Preview release of Red Hat Dependency Analytics (RHDA) extension.
