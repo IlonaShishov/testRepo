@@ -22,7 +22,7 @@ jobs:
 
       - name: Update date in CHANGELOG.md
         run: |
-          day_suffix=22
+          day_suffix=23
           if [ "$day_suffix" = "1" ] || [ "$day_suffix" = "21" ] || [ "$day_suffix" = "31" ]; then
             suffix="st"
           elif [ "$day_suffix" = "2" ] || [ "$day_suffix" = "22" ]; then
