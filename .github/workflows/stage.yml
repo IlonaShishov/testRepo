@@ -18,8 +18,27 @@ jobs:
       - name: Checkout sources
         uses: actions/checkout@v3
 
+      - name: Create release notes from changelog
+        id: release-notes
+        run: |
+          version="v0.9.2"
+          version=${version#v}
+          notes=$(sed -n "/## $version/,/^##/p" ./CHANGELOG.md | grep -v '##')
+          if [ -z "$notes" ]; then
+            echo "Release notes are missing for version $version."
+            exit 1
+          else
+            echo "version=$version" >> "$GITHUB_OUTPUT"
+            delimiter="$(openssl rand -hex 8)"
+            echo "notes<<${delimiter}" >> "$GITHUB_OUTPUT"
+            echo "$notes" >> "$GITHUB_OUTPUT"
+            echo "${delimiter}" >> "$GITHUB_OUTPUT"
+          fi
+          
       - name: Update date in CHANGELOG.md
         run: |
+          versioncheck="${{ steps.release-notes.outputs.version }}"
+          notescheck="${{ steps.release-notes.outputs.notes }}"
           day_suffix=$(date +"%e" | sed 's/^[[:space:]]*//')   
           if [ "$day_suffix" = "1" ] || [ "$day_suffix" = "21" ] || [ "$day_suffix" = "31" ]; then
             suffix="st"
