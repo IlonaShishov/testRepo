@@ -28,11 +28,7 @@ jobs:
             echo "Release notes are missing for version $version."
             exit 1
           else
-            echo "version=$version" >> "$GITHUB_OUTPUT"
-            delimiter="$(openssl rand -hex 8)"
-            echo "notes<<${delimiter}" >> "$GITHUB_OUTPUT"
-            echo "$notes" >> "$GITHUB_OUTPUT"
-            echo "${delimiter}" >> "$GITHUB_OUTPUT"
+            echo "version"
           fi
           
       - name: Update date in CHANGELOG.md
